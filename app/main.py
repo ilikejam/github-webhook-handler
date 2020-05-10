@@ -5,10 +5,15 @@ import json
 import os
 import subprocess
 
+# Mounted in by docker
 repobase = "/repos/"
+secret_file = "/etc/github_webhook_secret"
+
+with open(secret_file, 'r') as file:
+    secret = file.read().strip()
 
 app = Flask(__name__)  # Standard Flask app
-webhook = Webhook(app) # Defines '/postreceive' endpoint
+webhook = Webhook(app, secret=secret) # Defines '/postreceive' endpoint
 
 @webhook.hook()        # Defines a handler for the 'push' event
 def on_push(data):
