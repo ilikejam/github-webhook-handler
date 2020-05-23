@@ -4,9 +4,8 @@
 # Needs libuid-wrapper to allow git clones over ssh to work when we're an arbitrary user
 
 export HOME=/var/tmp/user
-mkdir -p $HOME
-chmod 700 $HOME
-mkdir -p "$HOME"/.ssh
+mkdir -p "$HOME/.ssh"
+chmod 700 "$HOME"
 chmod 700 "$HOME"/.ssh
 cp /etc/id_github_deploy "$HOME"/.ssh
 chmod 600 "$HOME"/.ssh/id_github_deploy
