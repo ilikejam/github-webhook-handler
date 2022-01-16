@@ -1,6 +1,7 @@
 FROM python:3-slim
 RUN pip install flask six
 RUN apt-get update && apt-get -y --no-install-recommends install \
+        openssh-client \
         git \
         libuid-wrapper && \
         rm -rf /var/lib/apt/lists/*
