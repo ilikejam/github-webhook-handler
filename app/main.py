@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-from github_webhook import Webhook
-from flask import Flask
 import json
 import os
 import subprocess
+
+from flask import Flask
+from github_webhook import Webhook
 
 # Mounted in by docker
 repobase = "/repos/"

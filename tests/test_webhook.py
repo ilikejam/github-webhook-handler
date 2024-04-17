@@ -2,9 +2,10 @@
 
 from __future__ import print_function
 
+import json
+
 import pytest
 import werkzeug
-import json
 
 try:
     from unittest import mock
@@ -61,7 +62,10 @@ def test_constructor():
 
     # THEN
     app.add_url_rule.assert_called_once_with(
-        endpoint="/postreceive", rule="/postreceive", view_func=webhook._postreceive, methods=["POST"]
+        endpoint="/postreceive",
+        rule="/postreceive",
+        view_func=webhook._postreceive,
+        methods=["POST"],
     )
 
 
@@ -75,7 +79,10 @@ def test_init_app_flow():
 
     # THEN
     app.add_url_rule.assert_called_once_with(
-        endpoint="/postreceive", rule="/postreceive", view_func=webhook._postreceive, methods=["POST"]
+        endpoint="/postreceive",
+        rule="/postreceive",
+        view_func=webhook._postreceive,
+        methods=["POST"],
     )
 
 
@@ -153,7 +160,7 @@ def test_can_handle_zero_events(webhook, push_request):
     webhook._postreceive()  # noop
 
 
-@pytest.mark.parametrize("secret", [u"secret", b"secret"])
+@pytest.mark.parametrize("secret", ["secret", b"secret"])
 @mock.patch("github_webhook.webhook.hmac")
 def test_calls_if_signature_is_correct(mock_hmac, app, push_request, secret):
     # GIVEN

@@ -1,5 +1,7 @@
 FROM python:3-slim
-RUN pip install flask six
+# hadolint ignore=DL3013
+RUN pip install --no-cache-dir flask six
+# hadolint ignore=DL3008
 RUN apt-get update && apt-get -y --no-install-recommends install \
         openssh-client \
         git \
