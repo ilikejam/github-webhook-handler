@@ -10,7 +10,8 @@ chmod 700 "$HOME"/.ssh
 cp /etc/id_github_deploy "$HOME"/.ssh
 chmod 600 "$HOME"/.ssh/id_github_deploy
 git config --global core.sshCommand 'ssh -o StrictHostKeyChecking=no -i '"$HOME"/.ssh/id_github_deploy
-git config --global user.email "nobody@example.com"
+git config --global user.email "github-webhook-handler@example.com"
+git config --global --add safe.directory '*'
 export LD_PRELOAD=libuid_wrapper.so UID_WRAPPER=1 UID_WRAPPER_ROOT=1
 export PYTHONUNBUFFERED=1
 /app/main.py
